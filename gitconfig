@@ -1,0 +1,6 @@
+[user]
+    name = Yuichi Hagio
+    email = yhagio87@gmail.com
+
+[includeIf "gitdir:~/Shopify/"]
+    path = shopify_stuff/gitconfig-shopify

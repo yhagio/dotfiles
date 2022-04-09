@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  # mysql:
+  #   image: mysql:8.0.28
+  #   restart: always
+  #   environment:
+  #     # MYSQL_DATABASE: ''
+  #     # MYSQL_USER: 'devuser'
+  #     # MYSQL_PASSWORD: 'password'
+  #     MYSQL_ROOT_PASSWORD: 'password'
+  #   ports:
+  #     - '3306:3306'
+  #   volumes:
+  #     - mysqldata:/var/lib/mysql
+
+  pg:
+    image: postgres:13.6
+    container_name: pg
+    volumes:
+      # Initialize with following SQL
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      # Persist data
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+
+  # mongo:
+  #   image: mongo:5.0.6
+  #   container_name: mongo
+  #   ports:
+  #     - 27017:27017
+  #   restart: always
+
+  rds:
+    image: redis:6.0.16
+    container_name: rds
+    ports:
+      - 6379:6379
+    restart: always
+
+  # es:
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:8.1.2
+  #   container_name: es
+  #   restart: always
+  #   environment:
+  #     - node.name=es
+  #     - cluster.initial_master_nodes=es
+  #     - cluster.name=docker-cluster
+  #     - bootstrap.memory_lock=true
+  #     - http.cors.enabled=true
+  #     - http.cors.allow-origin=*
+  #     - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+  #   ulimits:
+  #     memlock:
+  #       soft: -1
+  #       hard: -1
+  #   volumes:
+  #     - esdata01:/usr/share/elasticsearch/data
+  #   ports:
+  #     - 9200:9200
+
+volumes:
+  mysqldata:
+  pgdata:
+  esdata01:
+    driver: local
