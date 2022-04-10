@@ -2,17 +2,16 @@
 
 # echo "Installation starts..."
 
-# THIS_DIR = $(pwd)
-THIS_DIR = "~/dotfiles"
-
 # echo "Installing oh-my-zsh ..."
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" 
 
+DOTFILE_DIR = $(pwd)
+
 # echo "Setting up symlinks..."
-ln -sfn $THIS_DIR/local_infra ~/.local_infra
-ln -sfn $THIS_DIR/shopify_stuff ~/.shopify_stuff
-ln -sfn $THIS_DIR/zshrc ~/.zshrc 
-ln -sfn $THIS_DIR/gitconfig ~/.gitconfig
+# ln -sfn $DOTFILE_DIR/local_infra ~/.local_infra
+# ln -sfn $DOTFILE_DIR/shopify_stuff ~/.shopify_stuff
+ln -sfn $DOTFILE_DIR/zshrc ~/.zshrc 
+# ln -sfn $DOTFILE_DIR/gitconfig ~/.gitconfig
 # Reference ln command: https://man7.org/linux/man-pages/man1/ln.1.html
 
 source ~/.zshrc
