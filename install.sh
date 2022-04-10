@@ -2,7 +2,8 @@
 
 # echo "Installation starts..."
 
-THIS_DIR = $(pwd)
+# THIS_DIR = $(pwd)
+THIS_DIR = "~/dotfiles"
 
 # echo "Installing oh-my-zsh ..."
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" 
